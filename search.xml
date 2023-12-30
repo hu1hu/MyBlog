@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>栈与队列</title>
+      <link href="/2023/12/26/Java/Java%E5%9F%BA%E7%A1%80/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/"/>
+      <url>/2023/12/26/Java/Java%E5%9F%BA%E7%A1%80/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/</url>
+      
+        <content type="html"><![CDATA[<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="栈的基本概念"><a href="#栈的基本概念" class="headerlink" title="栈的基本概念"></a>栈的基本概念</h3><p>栈是一种特殊的线性结构，总在栈尾处增加（push）或删除（pop）元素，是典型的LIFO数据结构。</p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/screen-shot-2018-06-02-at-203523.png" alt="img" style="zoom:50%;" /><h3 id="在Java中的使用"><a href="#在Java中的使用" class="headerlink" title="在Java中的使用"></a>在Java中的使用</h3><p>​在java中栈是Vector的一个子类，正是由于这个原因Stack继承了Vector的所有方法，并可以在任意位置添加或删除元素。这种能力无疑是破坏了栈这种数据结构的封装性。由于这种原因官方推荐使用Deque（双端队列）接口来代替栈的功能，但是双端队列可以双端操作，还是会破坏栈这种数据结构的封装性。但是这是历史遗留问题。现在工程中可以自己封装一个真正的栈来使用。</p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231225213124369.png" alt="image-20231225213124369" style="zoom:50%;" /><table><thead><tr><th>操作</th><th>成功</th><th>失败</th></tr></thead><tbody><tr><td>push</td><td>void</td><td>void</td></tr><tr><td>pop</td><td>栈顶元素</td><td>NoSuchElementException</td></tr><tr><td>peek</td><td>栈顶元素</td><td>空返回null</td></tr></tbody></table><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 初始化队列</span></span><br><span class="line">Deque&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line"><span class="comment">// 2. 入栈</span></span><br><span class="line">stack.push(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 3. 查看栈顶元素</span></span><br><span class="line">System.out.println(stack.peek());</span><br><span class="line"><span class="comment">// 4. 出栈</span></span><br><span class="line">System.out.println(stack.pop());</span><br><span class="line">System.out.println(stack.peek());<span class="comment">// 空返回null</span></span><br><span class="line">System.out.println(stack.pop()); <span class="comment">// 空抛出异常NoSuchElementException</span></span><br></pre></td></tr></table></figure><h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h3 id="队列的基本概念"><a href="#队列的基本概念" class="headerlink" title="队列的基本概念"></a>队列的基本概念</h3><p>队列是一种特殊的线性结构，总在队列头删除（dequeue）元素，队列结尾插入（enqueue）元素，是典型的FIFO数据结构。</p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/screen-shot-2018-05-03-at-151021.png" alt="img" style="zoom:50%;" /><h3 id="在Java中的使用-1"><a href="#在Java中的使用-1" class="headerlink" title="在Java中的使用"></a>在Java中的使用</h3><h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ol><li><strong>单向队列（Queue）</strong>：只能在一端插入数据，在另一端删除数据。</li><li><strong>双向队列（Deque）</strong>：每一端都可以进行插入数据和删除数据的操作。</li><li><strong>优先级队列</strong>：优先级队列是比栈和队列更专用的数据结构，在优先级队列中，数据项按照关键字进行排序，关键字最小（或者最大）的数据项往往在队列的最前面，而数据项在插入的时候都会插入到合适的位置以确保队列的有序。</li></ol><h4 id="java类图"><a href="#java类图" class="headerlink" title="java类图"></a>java类图</h4><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231226110249047.png" alt="image-20231226110249047" style="zoom:50%;" /><h4 id="队列常用操作"><a href="#队列常用操作" class="headerlink" title="队列常用操作"></a>队列常用操作</h4><table><thead><tr><th>操作</th><th>功能</th><th>结果</th></tr></thead><tbody><tr><td>add</td><td>添加一个元素</td><td>如果队列已满，则抛出一个</td></tr><tr><td>remove</td><td>移除并返回队列头部的元素</td><td>如果队列为空，则抛出一个NoSuchElementException异常</td></tr><tr><td>element</td><td>返回队列头部的元素</td><td>如果队列为空，则抛出一个NoSuchElementException异常</td></tr><tr><td>offer</td><td>添加一个元素并返回true</td><td>如果队列已满，则返回null</td></tr><tr><td>peek</td><td>返回队列头部的元素</td><td>如果队列为空则返回null</td></tr><tr><td>poll</td><td>移除并返回队列头部的元素</td><td>如果队列为空，则返回null</td></tr><tr><td>put</td><td>添加一个元素</td><td>如果队列满，则阻塞</td></tr><tr><td>take</td><td>移除并返回队列头部的元素</td><td>如果队列为空，则阻塞</td></tr></tbody></table><h4 id="Queue接口"><a href="#Queue接口" class="headerlink" title="Queue接口"></a>Queue接口</h4><p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231226113239001.png" alt="image-20231226113239001"></p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Queue_</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Queue&lt;Integer&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 添加元素</span></span><br><span class="line">        queue.offer(<span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 获取队首元素，如果没有返回null</span></span><br><span class="line">        System.out.println(queue.peek());</span><br><span class="line">        <span class="comment">// 获取队首元素并删除，如果没有返回null</span></span><br><span class="line">        System.out.println(queue.poll());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="Deque接口"><a href="#Deque接口" class="headerlink" title="Deque接口"></a>Deque接口</h4><p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231226235105641.png" alt="image-20231226235105641"></p><h4 id="PriorityQueue类"><a href="#PriorityQueue类" class="headerlink" title="PriorityQueue类"></a>PriorityQueue类</h4><p>优先队列，底层使用堆实现</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/Tommy_____/article/details/106445631">Java 程序员，别用 Stack？！_工作中会用到stack类么-CSDN博客</a></p><p><a href="https://leetcode.cn/leetbook/detail/queue-stack/">队列 &amp; 栈 - LeetBook - 力扣（LeetCode）全球极客挚爱的技术成长平台</a></p><p><a href="https://juejin.cn/post/7215177412908367932">搞懂Java中的队列以及使用场景 - 掘金 (juejin.cn)</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+          <category> Java基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 栈 </tag>
+            
+            <tag> 队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>格式</title>
+      <link href="/2023/12/25/%E5%85%B6%E5%AE%83/%E6%A0%BC%E5%BC%8F/"/>
+      <url>/2023/12/25/%E5%85%B6%E5%AE%83/%E6%A0%BC%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 格式</span><br><span class="line"><span class="built_in">date</span>: 2023/12/25 12:45:12</span><br><span class="line">update: 2023/12/27 12:45:55</span><br><span class="line">description: 这个是一个格式</span><br><span class="line">comments: <span class="literal">false</span></span><br><span class="line">top_imp:</span><br><span class="line">aside: <span class="literal">true</span></span><br><span class="line">tags:</span><br><span class="line"> - 格式</span><br><span class="line">categories:</span><br><span class="line"> - 其它</span><br><span class="line">---</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其它 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 格式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git速查手册</title>
+      <link href="/2023/12/25/%E5%85%B6%E5%AE%83/Git%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/"/>
+      <url>/2023/12/25/%E5%85%B6%E5%AE%83/Git%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/</url>
+      
+        <content type="html"><![CDATA[<h2 id="信息配置"><a href="#信息配置" class="headerlink" title="信息配置"></a>信息配置</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看全部配置信息</span></span><br><span class="line">git config --list</span><br><span class="line"><span class="comment"># 查看仓库配置信息</span></span><br><span class="line">git config --<span class="built_in">local</span> --list</span><br><span class="line"><span class="comment"># 查看系统信息配置</span></span><br><span class="line">git config --system --list</span><br><span class="line"><span class="comment"># 查看用户信息配置</span></span><br><span class="line">git config --global --list</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line">q</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看某个配置信息</span></span><br><span class="line">git config user.name</span><br><span class="line"><span class="comment"># 用户级别-信息配置（配置用户名）</span></span><br><span class="line">git config --global user.name <span class="string">&quot;hu1hu&quot;</span></span><br><span class="line"><span class="comment"># 用户级别-删除配置信息</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br></pre></td></tr></table></figure><p><strong>注意事项：</strong></p><ul><li>以linux系统为例，系统信息全部用户通用，用户信息用户内通用（如root用户），仓库信息作用于一个仓库内。</li><li>若出现多条相同的配置信息，采用最后一条，采用范围最小的一条。</li><li>git配置是键值对的形式，同一级别同一个配置信息会覆盖原有的信息。</li><li>查看信息时，如果没有指定级别，则从local-&gt;global-&gt;system 向上找直到找到或没有</li><li>删除信息时，如果没有指定级别，则从local-&gt;global-&gt;system 向上找直到找到或没有，删除一条后即结束</li></ul><h3 id="必要的配置"><a href="#必要的配置" class="headerlink" title="必要的配置"></a>必要的配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一般使用用户级别配置</span></span><br><span class="line"><span class="comment"># 配置用户名与用户邮箱</span></span><br><span class="line">git config --global user.name <span class="string">&quot;hu1hu&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;3261801992@qq.com&quot;</span></span><br><span class="line"><span class="comment"># 配置文件区分大小写</span></span><br><span class="line">git config --global core.ignore <span class="literal">false</span></span><br></pre></td></tr></table></figure><ul><li>用户名和邮箱记得配置成自己的，由于git会将每个提交（commit）与一个特定的作者关联起来，每次提交都会携带这些个人信息。</li></ul><h3 id="个人喜好配置"><a href="#个人喜好配置" class="headerlink" title="个人喜好配置"></a>个人喜好配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用户级别配置</span></span><br><span class="line"><span class="comment"># 日志格式别名(使用 git lg 展示日志)</span></span><br><span class="line"><span class="comment"># log: 表示运行git log命令。</span></span><br><span class="line"><span class="comment"># --color: 启用彩色输出，使日志信息更易读。</span></span><br><span class="line"><span class="comment"># --graph: 在日志输出中显示分支图形，以便清楚地看到分支的合并和分支关系。</span></span><br><span class="line"><span class="comment"># --pretty=format:&#x27;...&#x27;: 定义日志输出的格式。%Cred、%Creset、%C(yellow)、%Cgreen、%C(bold blue)和%Creset是用于设置输出文本颜色的占位符，%h表# 示简短的提交哈希值，%d表示分支信息，%s表示提交消息，%cr表示相对提交时间，%an表示作者名字。</span></span><br><span class="line"><span class="comment"># --abbrev-commit: 使用缩写的提交哈希值，以便在日志信息中显示更简洁的提交标识。</span></span><br><span class="line">git config --global alias.lg <span class="string">&quot;log --color --graph --pretty=format:&#x27;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#x27; --abbrev-commit&quot;</span></span><br></pre></td></tr></table></figure><h3 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 对所用域名配置代理</span></span><br><span class="line"><span class="comment"># 格式： git config --global http.proxy &lt;protocol&gt;://&lt;host&gt;:&lt;port&gt;</span></span><br><span class="line"><span class="comment"># 1、配置http代理，支持http/https 请求</span></span><br><span class="line">git config --global  http.proxy http://127.0.0.1:7890</span><br><span class="line"><span class="comment"># 2、配置https代理，支持https 请求,(要在代理服务器上配置SSL/TLS证书)</span></span><br><span class="line">git config --global  http.proxy http://127.0.0.1:7890</span><br><span class="line"><span class="comment"># 配置sockets5代理，通用型代理（会话层代理）</span></span><br><span class="line">git config --global  http.proxy sockets5://127.0.0.1:7890</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定域名设置代理</span></span><br><span class="line"><span class="comment"># 格式：git config --global http.&lt;url&gt;.proxy &lt;protocol&gt;://&lt;host&gt;:&lt;port&gt;</span></span><br><span class="line"><span class="comment"># 配置http代理，支持http/https 请求</span></span><br><span class="line">git config --global  http.https://github.com.proxy http://127.0.0.1:7890</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推荐使用指定域名的sockets5代理，可以配置多个</span></span><br><span class="line">git config --global http.https://github.com.proxy sockets5://127.0.0.1:7890</span><br><span class="line">git config --global http.https://gitlab.com.proxy sockets5://127.0.0.1:7890</span><br></pre></td></tr></table></figure><ul><li>当我们从github克隆仓库的时候可能会很慢，这时你就可能需要配置代理了。</li><li>记得把上面的端口号换成自己的。</li><li>参考：<a href="https://ericclose.github.io/git-proxy-config.html">一文让你了解如何为 Git 设置代理 - Eric (ericclose.github.io)</a></li></ul><h3 id="私有仓库克隆"><a href="#私有仓库克隆" class="headerlink" title="私有仓库克隆"></a>私有仓库克隆</h3><p>当我们需要克隆私有仓库时就需要执行登录操作，为了避免每次都需要输入用户（用户是邮箱）密码，我们可以进行相应的配置。</p><h5 id="1-SSH秘钥"><a href="#1-SSH秘钥" class="headerlink" title="1 SSH秘钥"></a>1 SSH秘钥</h5><p>将电脑中的公钥配置到github或gitee所需平台中</p><h5 id="2-使用凭据帮助器"><a href="#2-使用凭据帮助器" class="headerlink" title="2 使用凭据帮助器"></a>2 使用凭据帮助器</h5><p>第一次需要输入账号密码，以后会记住，默认开启使用系统自带的凭证管理器。虽然有进行加密，但是可能造成密码泄露。</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure><p><a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8">Git - 凭证存储 (git-scm.com)</a></p><h6 id="3-使用Personal-Access-Token（访问令牌）"><a href="#3-使用Personal-Access-Token（访问令牌）" class="headerlink" title="3 使用Personal Access Token（访问令牌）"></a>3 使用Personal Access Token（访问令牌）</h6><p>等等</p><h2 id="仓库初始化"><a href="#仓库初始化" class="headerlink" title="仓库初始化"></a>仓库初始化</h2><h3 id="初始化本地仓库"><a href="#初始化本地仓库" class="headerlink" title="初始化本地仓库"></a>初始化本地仓库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入本地仓库的文件夹中</span></span><br><span class="line">git init</span><br></pre></td></tr></table></figure><ul><li>该命令会创建一个名为.git的子目录，这个子目录中包含初始化Git仓库的所用必须的文件。但是这时项目中的文件还没有被跟踪，仅仅做了初始化操作。</li></ul><h3 id="克隆已有仓库"><a href="#克隆已有仓库" class="headerlink" title="克隆已有仓库"></a>克隆已有仓库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;url&gt; [仓库本地要使用名字]</span><br><span class="line"><span class="comment"># 仓库名默认与远程一致</span></span><br></pre></td></tr></table></figure><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><!-- | 命令                                    | 功能                                             | workspace |      | staging |      | local repository |      | remote repository || --------------------------------------- | ------------------------------------------------ | --------- | ---- | ------- | ---- | :--------------: | ---- | ----------------- || git add <file>                          | 将工作区的文件放入暂存区，如果文件没有跟踪则跟踪 |           | →    |         |      |                  |      |                   || git commit -m "注释"                    | 将暂存区的文件夹提交到本地仓库                   |           |      |         | →    |    ↓版本更新     |      |                   || git commit -am "注释"                   | 将暂存区的文件追加到本地仓库                     |           | →    |         | →    |                  |      |                   || git reset --soft <>                     | 本地仓库分支回退                                 |           |      |         |      |    ↑版本回退     |      |                   || git reset --mixed <>                    | 本地仓库分支回退，并恢复到暂存区                 |           |      |         | ←    |    ↑版本回退     |      |                   || git reset --hard <>                     | 本地仓库分支回退，并恢复到暂存区与工作区         |           | ←    |         | ←    |    ↑版本回退     |      |                   || git restore <file>                      | 将暂存区的文件恢复到工作区                       |           | ←    |         |      |                  |      |                   || git restore --staged <file>             | 将HEAD指向版本恢复到暂存区                       |           |      |         | ←    |                  |      |                   || git rm <file>                           | 删除工作区、暂存区的文件                         | delete    |      | delete  |      |                  |      |                   || git rm --cached <file>                  | 删除暂存区的文件                                 |           |      | delete  |      |                  |      |                   || git fetch <remote> <branch>             | 将远程仓库拉取到本地仓库                         |           |      |         |      |                  | ←    |                   || git pull <remote> <远程分支>:<本地分支> |                                                  |           | ←    |         | ←    |                  | ←    |                   || git push                                |                                                  |           |      |         |      |                  | →    |                   | --><ul><li>git restore –staged <file> :默认从HEAD恢复，也可使用参数–source&#x3D;  指定版本。</li><li>git commit –amend -m “···”: 追加提交</li></ul><h2 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以查看仓库内的文件状态与一些建议，当不知道怎么办的时候可以使用</span></span><br><span class="line">git status</span><br></pre></td></tr></table></figure><p><strong>文件状态：</strong></p><ul><li>Untracked：未跟踪，没有交给git仓库管理</li><li>Unmodified：已跟踪，未修改（工作区与暂存区一致，与本地仓库一致）</li><li>Modified：已跟踪，已修改（工作区与暂存区不一致）</li><li>Staged：已跟踪，已缓存（工作区与暂存区一致，与本地仓库不一致）</li></ul><h2 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h2><h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 原生</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"><span class="comment"># 使用自定义，上面信息配置起了别名</span></span><br><span class="line">git lg</span><br></pre></td></tr></table></figure><h3 id="图形化git自带"><a href="#图形化git自带" class="headerlink" title="图形化git自带"></a>图形化git自带</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gitk</span><br><span class="line"><span class="comment"># 解决中文乱码</span></span><br><span class="line">git config --global gui.encoding utf-8</span><br></pre></td></tr></table></figure><h2 id="修改最后一次的提交"><a href="#修改最后一次的提交" class="headerlink" title="修改最后一次的提交"></a>修改最后一次的提交</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.使用编辑器编辑上次提交信息</span></span><br><span class="line">git commit --amend</span><br><span class="line"><span class="comment"># 2.上次的提交信息被覆盖</span></span><br><span class="line">git commit --amend -m<span class="string">&quot;test&quot;</span>:</span><br></pre></td></tr></table></figure><h2 id="git-远程仓库操作"><a href="#git-远程仓库操作" class="headerlink" title="git 远程仓库操作"></a>git 远程仓库操作</h2><h3 id="查看远程仓库"><a href="#查看远程仓库" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote</span><br><span class="line"><span class="comment"># 使用-v，显示远程仓库简称与url</span></span><br><span class="line">git remote -v</span><br></pre></td></tr></table></figure><h3 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add &lt;shortname&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure><h3 id="删除远程仓库"><a href="#删除远程仓库" class="headerlink" title="删除远程仓库"></a>删除远程仓库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote remove &lt;shortname&gt;</span><br><span class="line"><span class="comment"># git remote rm &lt;shortname&gt;</span></span><br></pre></td></tr></table></figure><h3 id="重命名远程仓库"><a href="#重命名远程仓库" class="headerlink" title="重命名远程仓库"></a>重命名远程仓库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote rename &lt;old&gt; &lt;new&gt;</span><br></pre></td></tr></table></figure><h3 id="修改指定远程仓库的URL"><a href="#修改指定远程仓库的URL" class="headerlink" title="修改指定远程仓库的URL"></a>修改指定远程仓库的URL</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote set-url &lt;remote_name&gt; &lt;new_url&gt;</span><br></pre></td></tr></table></figure><h2 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h2><p>按两下<code>tab</code>键,当你只记住一部分操作的时候，这个操作有神奇的作用。</p><h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure><h3 id="新建本地分支"><a href="#新建本地分支" class="headerlink" title="新建本地分支"></a>新建本地分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch &lt;新分支名&gt;</span><br></pre></td></tr></table></figure><h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d &lt;分支名&gt;</span><br></pre></td></tr></table></figure><h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># checkout是移动HEAD</span></span><br><span class="line">git checkout &lt;分支名&gt;</span><br><span class="line"><span class="comment"># 新版切换分支命令</span></span><br><span class="line">git switch &lt;分支名&gt;</span><br></pre></td></tr></table></figure><h3 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge &lt;分支名&gt;</span><br><span class="line"><span class="comment"># 将分支合并到当前分支</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 当有冲突时我们要处理冲突</span></span><br><span class="line"><span class="comment"># 1.手动处理</span></span><br><span class="line"><span class="comment"># 2.git add .</span></span><br><span class="line"><span class="comment"># 3.git commit</span></span><br><span class="line"><span class="comment"># 合并后把原来的分支删除</span></span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://git-scm.com/doc"><a href="https://git-scm.com/book/zh/v2/">Git - Book (git-scm.com)</a></a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其它 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+            <tag> 版本控制 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux常用指令</title>
+      <link href="/2023/12/25/%E5%85%B6%E5%AE%83/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+      <url>/2023/12/25/%E5%85%B6%E5%AE%83/Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h2 id="linux的目录结构"><a href="#linux的目录结构" class="headerlink" title="linux的目录结构"></a>linux的目录结构</h2><p><img src="https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027214128.png" alt="image-20221027214128453"></p><ul><li><p><code>/</code>，根目录是最顶级的目录了</p></li><li><p><code>/bin</code>，bin是Binaries（二进制文件）的缩写，这个目录存放着最经常使用的命令</p></li><li><p><code>/dev</code>，dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</p></li><li><p><code>/etc</code>，etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p></li><li><p><code>/home</code>，用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的，如上图中的 alice、bob 和 eve。</p></li><li><p><code>/lib</code>，lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</p></li><li><p><code>/media</code>，linux 系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux 会把识别的设备挂载到这个目录下。</p></li><li><p><code>/mnt</code>，系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在 &#x2F;mnt&#x2F; 上，然后进入该目录就可以查看光驱里的内容了。</p></li><li><p><code>/opt</code>，opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p></li><li><p><code>/proc</code>，proc 是 Processes(进程) 的缩写，&#x2F;proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件。</p></li><li><p><code>/root</code>，该目录为系统管理员，也称作超级权限者的用户主目录。</p></li><li><p><code>/sbin</code>，s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</p></li></ul><ul><li><p><code>/var</code>，var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p></li><li><p><code>/usr</code>，usr 是 unix shared resources(共享资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</p></li></ul><h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p><strong>ls命令</strong>是list的缩写，用来显示目标列表</p><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> [选项] [文件名]</span><br></pre></td></tr></table></figure><h4 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-l  <span class="comment"># 列表形式输出</span></span><br><span class="line">-h  <span class="comment"># 人性化输出</span></span><br><span class="line">-a  <span class="comment"># 输出全部文件（包括隐藏）</span></span><br><span class="line">-t  <span class="comment"># 按文件修改时间排序</span></span><br><span class="line">-S  <span class="comment"># 按文件大小排序</span></span><br></pre></td></tr></table></figure><h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>目录：要显示列表的目录，也可以是具体的文件。</p><h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><p>不同颜色代表不同的文件类型</p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231227234852652.png" alt="image-20231227234852652" style="zoom:70%;" /><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.runoob.com/linux/linux-tutorial.html">Linux 教程 | 菜鸟教程 (runoob.com)</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其它 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>基本数据类型</title>
+      <link href="/2023/12/25/Java/Java%E5%9F%BA%E7%A1%80/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+      <url>/2023/12/25/Java/Java%E5%9F%BA%E7%A1%80/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+          <category> Java基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
