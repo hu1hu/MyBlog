@@ -4,23 +4,23 @@
   
     
     <entry>
-      <title>template</title>
-      <link href="/MyBlog/posts/721/"/>
-      <url>/MyBlog/posts/721/</url>
+      <title>Windows杀死占用端口的进程</title>
+      <link href="/MyBlog/posts/windows72hej792/"/>
+      <url>/MyBlog/posts/windows72hej792/</url>
       
-        <content type="html"><![CDATA[<h1 id="开心"><a href="#开心" class="headerlink" title="开心"></a>开心</h1>]]></content>
+        <content type="html"><![CDATA[<h2 id="查找端口占用"><a href="#查找端口占用" class="headerlink" title="查找端口占用"></a>查找端口占用</h2><p>打开<code>cmd</code>输入下面指令</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -aon|findstr <span class="string">&quot;8081&quot;</span></span><br></pre></td></tr></table></figure><ul><li><p><code>netstat -aon</code> 是一个 Windows 命令行命令，用于显示当前系统中所有活动的网络连接和监听端口，并列出与每个连接相关的进程 ID（PID）。</p></li><li><p><code>|</code> 是管道符号，用于将一个命令的输出传递给另一个命令进行处理。</p></li><li><p><code>findstr &quot;8081&quot;</code> 是一个 Windows 命令行命令，用于在文本中查找包含指定字符串（这里是 “8081”）的行，并将这些行输出到命令行窗口。</p></li></ul><h2 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">taskkill /T /F /PID 8081</span><br></pre></td></tr></table></figure><ul><li><code>/T</code> 参数表示终止指定进程及其所有子进程。</li><li><code>/F</code> 参数表示强制终止进程，而不显示终止确认提示。</li><li><code>/PID 8081</code> 参数指定要终止的进程的 PID。</li></ul>]]></content>
       
       
       <categories>
           
-          <category> test </category>
+          <category> 知识碎片 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> test </tag>
+            <tag> Windows </tag>
             
         </tags>
       
@@ -45,22 +45,9 @@
       
         <tags>
             
-            <tag> windows </tag>
+            <tag> Windows </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/MyBlog/posts/kd38sd72c/"/>
-      <url>/MyBlog/posts/kd38sd72c/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
       
     </entry>
     
