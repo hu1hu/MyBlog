@@ -4,35 +4,6 @@
   
     
     <entry>
-      <title>栈与队列</title>
-      <link href="/MyBlog/posts/16574/"/>
-      <url>/MyBlog/posts/16574/</url>
-      
-        <content type="html"><![CDATA[<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="栈的基本概念"><a href="#栈的基本概念" class="headerlink" title="栈的基本概念"></a>栈的基本概念</h3><p>栈是一种特殊的线性结构，总在栈尾处增加（push）或删除（pop）元素，是典型的LIFO数据结构。</p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/screen-shot-2018-06-02-at-203523.png" alt="img" style="zoom:50%;" /><h3 id="在Java中的使用"><a href="#在Java中的使用" class="headerlink" title="在Java中的使用"></a>在Java中的使用</h3><p>​在java中栈是Vector的一个子类，正是由于这个原因Stack继承了Vector的所有方法，并可以在任意位置添加或删除元素。这种能力无疑是破坏了栈这种数据结构的封装性。由于这种原因官方推荐使用Deque（双端队列）接口来代替栈的功能，但是双端队列可以双端操作，还是会破坏栈这种数据结构的封装性。但是这是历史遗留问题。现在工程中可以自己封装一个真正的栈来使用。</p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231225213124369.png" alt="image-20231225213124369" style="zoom:50%;" /><table><thead><tr><th>操作</th><th>成功</th><th>失败</th></tr></thead><tbody><tr><td>push</td><td>void</td><td>void</td></tr><tr><td>pop</td><td>栈顶元素</td><td>NoSuchElementException</td></tr><tr><td>peek</td><td>栈顶元素</td><td>空返回null</td></tr></tbody></table><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 初始化队列</span></span><br><span class="line">Deque&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line"><span class="comment">// 2. 入栈</span></span><br><span class="line">stack.push(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 3. 查看栈顶元素</span></span><br><span class="line">System.out.println(stack.peek());</span><br><span class="line"><span class="comment">// 4. 出栈</span></span><br><span class="line">System.out.println(stack.pop());</span><br><span class="line">System.out.println(stack.peek());<span class="comment">// 空返回null</span></span><br><span class="line">System.out.println(stack.pop()); <span class="comment">// 空抛出异常NoSuchElementException</span></span><br></pre></td></tr></table></figure><h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h3 id="队列的基本概念"><a href="#队列的基本概念" class="headerlink" title="队列的基本概念"></a>队列的基本概念</h3><p>队列是一种特殊的线性结构，总在队列头删除（dequeue）元素，队列结尾插入（enqueue）元素，是典型的FIFO数据结构。</p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/screen-shot-2018-05-03-at-151021.png" alt="img" style="zoom:50%;" /><h3 id="在Java中的使用-1"><a href="#在Java中的使用-1" class="headerlink" title="在Java中的使用"></a>在Java中的使用</h3><h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ol><li><strong>单向队列（Queue）</strong>：只能在一端插入数据，在另一端删除数据。</li><li><strong>双向队列（Deque）</strong>：每一端都可以进行插入数据和删除数据的操作。</li><li><strong>优先级队列</strong>：优先级队列是比栈和队列更专用的数据结构，在优先级队列中，数据项按照关键字进行排序，关键字最小（或者最大）的数据项往往在队列的最前面，而数据项在插入的时候都会插入到合适的位置以确保队列的有序。</li></ol><h4 id="java类图"><a href="#java类图" class="headerlink" title="java类图"></a>java类图</h4><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231226110249047.png" alt="image-20231226110249047" style="zoom:50%;" /><h4 id="队列常用操作"><a href="#队列常用操作" class="headerlink" title="队列常用操作"></a>队列常用操作</h4><table><thead><tr><th>操作</th><th>功能</th><th>结果</th></tr></thead><tbody><tr><td>add</td><td>添加一个元素</td><td>如果队列已满，则抛出一个</td></tr><tr><td>remove</td><td>移除并返回队列头部的元素</td><td>如果队列为空，则抛出一个NoSuchElementException异常</td></tr><tr><td>element</td><td>返回队列头部的元素</td><td>如果队列为空，则抛出一个NoSuchElementException异常</td></tr><tr><td>offer</td><td>添加一个元素并返回true</td><td>如果队列已满，则返回null</td></tr><tr><td>peek</td><td>返回队列头部的元素</td><td>如果队列为空则返回null</td></tr><tr><td>poll</td><td>移除并返回队列头部的元素</td><td>如果队列为空，则返回null</td></tr><tr><td>put</td><td>添加一个元素</td><td>如果队列满，则阻塞</td></tr><tr><td>take</td><td>移除并返回队列头部的元素</td><td>如果队列为空，则阻塞</td></tr></tbody></table><h4 id="Queue接口"><a href="#Queue接口" class="headerlink" title="Queue接口"></a>Queue接口</h4><p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231226113239001.png" alt="image-20231226113239001"></p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Queue_</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Queue&lt;Integer&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 添加元素</span></span><br><span class="line">        queue.offer(<span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 获取队首元素，如果没有返回null</span></span><br><span class="line">        System.out.println(queue.peek());</span><br><span class="line">        <span class="comment">// 获取队首元素并删除，如果没有返回null</span></span><br><span class="line">        System.out.println(queue.poll());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="Deque接口"><a href="#Deque接口" class="headerlink" title="Deque接口"></a>Deque接口</h4><p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231226235105641.png" alt="image-20231226235105641"></p><h4 id="PriorityQueue类"><a href="#PriorityQueue类" class="headerlink" title="PriorityQueue类"></a>PriorityQueue类</h4><p>优先队列，底层使用堆实现</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/Tommy_____/article/details/106445631">Java 程序员，别用 Stack？！_工作中会用到stack类么-CSDN博客</a></p><p><a href="https://leetcode.cn/leetbook/detail/queue-stack/">队列 &amp; 栈 - LeetBook - 力扣（LeetCode）全球极客挚爱的技术成长平台</a></p><p><a href="https://juejin.cn/post/7215177412908367932">搞懂Java中的队列以及使用场景 - 掘金 (juejin.cn)</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-          <category> Java基础 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 栈 </tag>
-            
-            <tag> 队列 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>格式</title>
       <link href="/MyBlog/posts/7315/"/>
       <url>/MyBlog/posts/7315/</url>
