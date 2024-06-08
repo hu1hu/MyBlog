@@ -208,31 +208,6 @@
     
     
     <entry>
-      <title>linux常用指令</title>
-      <link href="/posts/40863/"/>
-      <url>/posts/40863/</url>
-      
-        <content type="html"><![CDATA[<h2 id="linux的目录结构"><a href="#linux的目录结构" class="headerlink" title="linux的目录结构"></a>linux的目录结构</h2><p><img src="https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027214128.png" alt="image-20221027214128453"></p><ul><li><code>/</code>，根目录是最顶级的目录了</li><li><code>/bin</code>，bin是Binaries（二进制文件）的缩写，这个目录存放着最经常使用的命令</li><li><code>/dev</code>，dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</li><li><code>/etc</code>，etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的配置文件和子目录。</li><li><code>/home</code>，用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的，如上图中的 alice、bob 和 eve。</li><li><code>/lib</code>，lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</li><li><code>/mnt</code>，系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在 &#x2F;mnt&#x2F; 上，然后进入该目录就可以查看光驱里的内容了。</li><li><code>/opt</code>，opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</li><li><code>/proc</code>，proc 是 Processes(进程) 的缩写，&#x2F;proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件。</li><li><code>/root</code>，该目录为系统管理员，也称作超级权限者的用户主目录。</li><li><code>/sbin</code>，s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</li></ul><ul><li><p><code>/var</code>，var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件（<code>/var/log</code>）。</p></li><li><p><code>/usr</code>，usr 是 unix shared resources(共享资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</p></li></ul><h3 id="软件安装位置"><a href="#软件安装位置" class="headerlink" title="软件安装位置"></a>软件安装位置</h3><blockquote><p>使用<code>apt-get install</code></p></blockquote><p>  A、下载的软件的存放位置：&#x2F;var&#x2F;cache&#x2F;apt&#x2F;archives</p><p>  B、安装后软件的默认位置：&#x2F;usr&#x2F;share</p><p>  C、可执行文件位置：&#x2F;usr&#x2F;bin</p><p>  D、配置文件位置：&#x2F;etc</p><p>   E、lib文件位置：&#x2F;usr&#x2F;lib</p><p><a href="https://blog.51cto.com/mystery888/1835223">linux下面&#x2F;usr&#x2F;local和opt目录有何区别 _51CTO博客_Linux opt目录</a></p><blockquote><p><code>/usr</code>：系统级的目录，可以理解为<code>C:/Windows/</code>，<code>/usr/lib</code>理解为<code>C:/Windows/System32</code>。<br><code>/usr/local</code>：用户级的程序目录，可以理解为<code>C:/Progrem Files/</code>。用户自己编译的软件默认会安装到这个目录下。<br><code>/opt</code>：用户级的程序目录，可以理解为<code>D:/Software</code>，opt有可选的意思，这里可以用于放置第三方大型软件（或游戏），当你不需要时，直接<code>rm -rf</code>掉即可。在硬盘容量不够时，也可将&#x2F;opt单独挂载到其他磁盘上使用。</p></blockquote><h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h3 id="处理目录"><a href="#处理目录" class="headerlink" title="处理目录"></a>处理目录</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>chmod</td><td></td></tr><tr><td>chown</td><td></td></tr><tr><td>chgrp</td><td></td></tr><tr><td>ls</td><td></td></tr><tr><td>cd</td><td></td></tr><tr><td>pwd</td><td></td></tr><tr><td>mkdir</td><td>-p ：帮助你直接将所需要的目录(包含上一级目录)递归创建起来！</td></tr><tr><td>rmdir</td><td></td></tr><tr><td>cp</td><td></td></tr><tr><td>rm</td><td></td></tr><tr><td>mv</td><td></td></tr><tr><td>tree</td><td>以树形展示文件结构</td></tr></tbody></table><h3 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>cat</td><td>查看大日志不适用，卡爆系统</td></tr><tr><td>tac</td><td></td></tr><tr><td>more</td><td></td></tr><tr><td>less</td><td></td></tr><tr><td>head</td><td></td></tr><tr><td>tail</td><td>-n ：后面接数字，代表显示几行的意思</td></tr></tbody></table><h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>不同颜色代表不同的文件类型</p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231227234852652.png" alt="image-20231227234852652" style="zoom:70%;" /><h2 id="用户和用户组管理"><a href="#用户和用户组管理" class="headerlink" title="用户和用户组管理"></a>用户和用户组管理</h2><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>useradd</td><td></td></tr><tr><td>userdel</td><td></td></tr><tr><td>usermod</td><td></td></tr><tr><td>passwd</td><td></td></tr><tr><td>groupadd</td><td></td></tr><tr><td>groupdel</td><td></td></tr><tr><td>groupmod</td><td></td></tr></tbody></table><h2 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h2><h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>df</td><td>列出文件系统的整体磁盘使用量</td></tr><tr><td>du</td><td>检查磁盘空间使用量</td></tr><tr><td>fdisk</td><td>用于磁盘分区（可以查看分区大小）</td></tr><tr><td>lsblk</td><td>查看分区大小</td></tr></tbody></table><h3 id="cpu、内存资源管理"><a href="#cpu、内存资源管理" class="headerlink" title="cpu、内存资源管理"></a>cpu、内存资源管理</h3><h2 id="VI-VIM"><a href="#VI-VIM" class="headerlink" title="VI&#x2F;VIM"></a>VI&#x2F;VIM</h2><p><img src="https://www.runoob.com/wp-content/uploads/2014/07/vim-vi-workmodel.png" alt="img"></p><p>查找：命令模式下<code>/&lt;需要查找的内容&gt;</code>  <code>n</code> 下一个</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://www.runoob.com/linux/linux-comm-apt.html">Linux apt 命令 | 菜鸟教程 (runoob.com)</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.runoob.com/linux/linux-tutorial.html">Linux 教程 | 菜鸟教程 (runoob.com)</a></p><p><a href="https://wangchujiang.com/linux-command/">Linux命令搜索引擎 命令</a></p><p><a href="https://z.itpub.net/article/detail/E8C122A4CA07F3EC5952EE9F0B233DD4">Linux 运维必会的150个常用命令，你都会用吗？ - 文章详情 (itpub.net)</a></p><p><a href="https://juejin.cn/post/6844904051281231879">一起搞懂Linux平均负载 - 掘金 (juejin.cn)</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 其它 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>git速查手册</title>
       <link href="/posts/55090/"/>
       <url>/posts/55090/</url>
@@ -252,6 +227,31 @@
             <tag> git </tag>
             
             <tag> 版本控制 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux常用指令</title>
+      <link href="/posts/40863/"/>
+      <url>/posts/40863/</url>
+      
+        <content type="html"><![CDATA[<h2 id="linux的目录结构"><a href="#linux的目录结构" class="headerlink" title="linux的目录结构"></a>linux的目录结构</h2><p><img src="https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027214128.png" alt="image-20221027214128453"></p><ul><li><code>/</code>，根目录是最顶级的目录了</li><li><code>/bin</code>，bin是Binaries（二进制文件）的缩写，这个目录存放着最经常使用的命令</li><li><code>/dev</code>，dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</li><li><code>/etc</code>，etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的配置文件和子目录。</li><li><code>/home</code>，用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的，如上图中的 alice、bob 和 eve。</li><li><code>/lib</code>，lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</li><li><code>/mnt</code>，系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在 &#x2F;mnt&#x2F; 上，然后进入该目录就可以查看光驱里的内容了。</li><li><code>/opt</code>，opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</li><li><code>/proc</code>，proc 是 Processes(进程) 的缩写，&#x2F;proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件。</li><li><code>/root</code>，该目录为系统管理员，也称作超级权限者的用户主目录。</li><li><code>/sbin</code>，s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</li></ul><ul><li><p><code>/var</code>，var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件（<code>/var/log</code>）。</p></li><li><p><code>/usr</code>，usr 是 unix shared resources(共享资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</p></li></ul><h3 id="软件安装位置"><a href="#软件安装位置" class="headerlink" title="软件安装位置"></a>软件安装位置</h3><blockquote><p>使用<code>apt-get install</code></p></blockquote><p>  A、下载的软件的存放位置：&#x2F;var&#x2F;cache&#x2F;apt&#x2F;archives</p><p>  B、安装后软件的默认位置：&#x2F;usr&#x2F;share</p><p>  C、可执行文件位置：&#x2F;usr&#x2F;bin</p><p>  D、配置文件位置：&#x2F;etc</p><p>   E、lib文件位置：&#x2F;usr&#x2F;lib</p><p><a href="https://blog.51cto.com/mystery888/1835223">linux下面&#x2F;usr&#x2F;local和opt目录有何区别 _51CTO博客_Linux opt目录</a></p><blockquote><p><code>/usr</code>：系统级的目录，可以理解为<code>C:/Windows/</code>，<code>/usr/lib</code>理解为<code>C:/Windows/System32</code>。<br><code>/usr/local</code>：用户级的程序目录，可以理解为<code>C:/Progrem Files/</code>。用户自己编译的软件默认会安装到这个目录下。<br><code>/opt</code>：用户级的程序目录，可以理解为<code>D:/Software</code>，opt有可选的意思，这里可以用于放置第三方大型软件（或游戏），当你不需要时，直接<code>rm -rf</code>掉即可。在硬盘容量不够时，也可将&#x2F;opt单独挂载到其他磁盘上使用。</p></blockquote><h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h3 id="处理目录"><a href="#处理目录" class="headerlink" title="处理目录"></a>处理目录</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>chmod</td><td></td></tr><tr><td>chown</td><td></td></tr><tr><td>chgrp</td><td></td></tr><tr><td>ls</td><td></td></tr><tr><td>cd</td><td></td></tr><tr><td>pwd</td><td></td></tr><tr><td>mkdir</td><td>-p ：帮助你直接将所需要的目录(包含上一级目录)递归创建起来！</td></tr><tr><td>rmdir</td><td></td></tr><tr><td>cp</td><td></td></tr><tr><td>rm</td><td></td></tr><tr><td>mv</td><td></td></tr><tr><td>tree</td><td>以树形展示文件结构</td></tr></tbody></table><h3 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>cat</td><td>查看大日志不适用，卡爆系统</td></tr><tr><td>tac</td><td></td></tr><tr><td>more</td><td></td></tr><tr><td>less</td><td></td></tr><tr><td>head</td><td></td></tr><tr><td>tail</td><td>-n ：后面接数字，代表显示几行的意思</td></tr></tbody></table><h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>不同颜色代表不同的文件类型</p><img src="http://hu1hu-markdown.oss-cn-heyuan.aliyuncs.com/images/image-20231227234852652.png" alt="image-20231227234852652" style="zoom:70%;" /><h2 id="用户和用户组管理"><a href="#用户和用户组管理" class="headerlink" title="用户和用户组管理"></a>用户和用户组管理</h2><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>useradd</td><td></td></tr><tr><td>userdel</td><td></td></tr><tr><td>usermod</td><td></td></tr><tr><td>passwd</td><td></td></tr><tr><td>groupadd</td><td></td></tr><tr><td>groupdel</td><td></td></tr><tr><td>groupmod</td><td></td></tr></tbody></table><h2 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h2><h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td>df</td><td>列出文件系统的整体磁盘使用量</td></tr><tr><td>du</td><td>检查磁盘空间使用量</td></tr><tr><td>fdisk</td><td>用于磁盘分区（可以查看分区大小）</td></tr><tr><td>lsblk</td><td>查看分区大小</td></tr></tbody></table><h3 id="cpu、内存资源管理"><a href="#cpu、内存资源管理" class="headerlink" title="cpu、内存资源管理"></a>cpu、内存资源管理</h3><h2 id="VI-VIM"><a href="#VI-VIM" class="headerlink" title="VI&#x2F;VIM"></a>VI&#x2F;VIM</h2><p><img src="https://www.runoob.com/wp-content/uploads/2014/07/vim-vi-workmodel.png" alt="img"></p><p>查找：命令模式下<code>/&lt;需要查找的内容&gt;</code>  <code>n</code> 下一个</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://www.runoob.com/linux/linux-comm-apt.html">Linux apt 命令 | 菜鸟教程 (runoob.com)</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.runoob.com/linux/linux-tutorial.html">Linux 教程 | 菜鸟教程 (runoob.com)</a></p><p><a href="https://wangchujiang.com/linux-command/">Linux命令搜索引擎 命令</a></p><p><a href="https://z.itpub.net/article/detail/E8C122A4CA07F3EC5952EE9F0B233DD4">Linux 运维必会的150个常用命令，你都会用吗？ - 文章详情 (itpub.net)</a></p><p><a href="https://juejin.cn/post/6844904051281231879">一起搞懂Linux平均负载 - 掘金 (juejin.cn)</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其它 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
             
         </tags>
       
